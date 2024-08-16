@@ -1,0 +1,21 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: web-ingress-with-annotation
+  annotations:
+    custom-annotation: "true"
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: web-with-annotation.local
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: web-server
+            port:
+              number: 80
+
